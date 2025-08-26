@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veasna Mom · Portfolio</title>
+  <meta name="description" content="Portfolio of Veasna Mom – CFD & scientific computing projects, publications, and contact." />
+  <meta name="author" content="Veasna Mom" />
+  <meta property="og:title" content="Veasna Mom · Portfolio" />
+  <meta property="og:description" content="CFD & scientific computing projects, publications, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/cover.png" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    :root{
+      --bg: #0b1020;         /* dark background */
+      --panel: #11162a;
+      --text: #e6eaf2;
+      --muted:#94a3b8;
+      --brand:#0ea5e9;       /* cyan */
+      --accent:#22d3ee;      /* lighter cyan */
+      --ring: rgba(14,165,233,.35);
+      --chip:#1d2440;
+      --ok:#22c55e; --warn:#f59e0b; --err:#ef4444;
+    }
+    :root.light{
+      --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569;
+      --chip:#eef2ff; --ring:rgba(14,165,233,.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:auto; padding:24px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in oklab, var(--bg) 70%, transparent); border-bottom:1px solid color-mix(in oklab, var(--panel) 80%, transparent)}
+    .nav{display:flex; align-items:center; gap:16px; justify-content:space-between}
+    .nav a{padding:10px 12px; border-radius:14px; opacity:.9}
+    .nav a:hover{background:color-mix(in oklab, var(--panel) 85%, transparent)}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; background:var(--brand); color:white; box-shadow:0 8px 30px -10px var(--ring); border:1px solid color-mix(in oklab, var(--brand) 60%, black)}
+    .btn:hover{transform:translateY(-1px); transition:.15s}
+    .btn.ghost{background:transparent; color:var(--text); border:1px solid color-mix(in oklab, var(--brand) 25%, var(--panel))}
+
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center; padding:42px 0}
+    .hero h1{font-size:clamp(36px, 5vw, 54px); line-height:1.03; margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .pill{display:inline-flex; align-items:center; gap:8px; font-size:14px; background:var(--chip); padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab, var(--brand) 25%, var(--panel))}
+    .hero-card{background:var(--panel); border:1px solid color-mix(in oklab, var(--brand) 20%, var(--panel)); padding:20px; border-radius:22px; box-shadow:0 20px 60px -30px var(--ring)}
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+    section{padding:28px 0}
+    section h2{font-size:26px; margin:0 0 14px}
+    .card{background:var(--panel); border-radius:20px; padding:18px; border:1px solid color-mix(in oklab, var(--brand) 20%, var(--panel))}
+    .card:hover{transform:translateY(-2px); transition:.18s}
+    .chip{display:inline-flex; gap:6px; align-items:center; font-size:12px; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid color-mix(in oklab, var(--brand) 25%, var(--panel))}
+    .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .space{height:2px; background:linear-gradient(90deg, transparent, var(--brand), transparent); margin:26px 0; opacity:.5}
+
+    .timeline{position:relative}
+    .timeline:before{content:""; position:absolute; left:11px; top:0; bottom:0; width:2px; background:color-mix(in oklab, var(--brand) 20%, var(--panel))}
+    .tl-item{position:relative; padding-left:34px; margin:16px 0}
+    .tl-item:before{content:""; position:absolute; left:3px; top:8px; width:18px; height:18px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px var(--ring)}
+
+    .footer{padding:30px 0; color:var(--muted); font-size:14px}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+    input, textarea{width:100%; background:transparent; border:1px solid color-mix(in oklab, var(--brand) 25%, var(--panel)); border-radius:14px; padding:10px 12px; color:var(--text); outline:none}
+    input:focus, textarea:focus{box-shadow:0 0 0 6px var(--ring)}
+    label{font-size:14px; color:var(--muted)}
+
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; background:var(--chip); border:1px solid color-mix(in oklab, var(--brand) 25%, var(--panel)); padding:2px 6px; border-radius:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="row" style="gap:10px">
+        <strong>VM</strong>
+        <nav class="row">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="row">
+        <button id="themeBtn" class="btn ghost" aria-label="Toggle theme">🌗 Theme</button>
+        <a class="btn" href="assets/Veasna_Mom_CV.pdf" download>↓ Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="top">
+      <div>
+        <span class="pill">🚀 Computational Fluid Dynamics · Scientific Computing</span>
+        <h1>Hi, I'm <span style="color:var(--accent)">Veasna Mom</span> — I build simulations, solvers, and visualizations.</h1>
+        <p class="muted">Focused on multiphase flows, turbulence modeling, and high‑quality post‑processing. I enjoy turning governing equations into readable, reproducible code.</p>
+        <div class="row" style="margin-top:14px">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="muted">Current</div>
+            <strong>Free‑surface flow around cylinder</strong>
+            <div class="row" style="margin-top:8px">
+              <span class="chip">OpenFOAM</span>
+              <span class="chip">VOF</span>
+              <span class="chip">Ansys Fluent</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="muted">Interests</div>
+            <strong>Transonic buffet · Heat transfer · LBM</strong>
+            <div class="row" style="margin-top:8px">
+              <span class="chip">rhoSimpleFoam</span>
+              <span class="chip">k‑ω SST</span>
+              <span class="chip">MATLAB</span>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="muted">Highlight</div>
+            <strong>Physics of Fluids (IIT Patna internship)</strong>
+            <p class="muted" style="margin:6px 0 0">Non‑equilibrium reacting flows with low‑dissipation schemes.</p>
+          </div>
+          <div class="card">
+            <div class="muted">Tools</div>
+            <div class="row">
+              <span class="chip">OpenFOAM v2312</span>
+              <span class="chip">ParaView</span>
+              <span class="chip">MATLAB</span>
+              <span class="chip">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a simulation enthusiast who works across OpenFOAM, Ansys Fluent, and custom Python/Matlab tooling. I value clean numerics, careful grid generation, and transparent post‑processing pipelines. Recently, I’ve explored multiphase Euler models (oil–water–air), overset meshes for rotors, and DNS for cylinder wakes.</p>
+      <div class="row" style="margin-top:10px">
+        <span class="chip">OpenFOAM</span><span class="chip">Ansys Fluent</span><span class="chip">ParaView</span><span class="chip">PyVista</span><span class="chip">PyFoam</span><span class="chip">C++</span><span class="chip">MATLAB</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="row" style="margin:10px 0 14px">
+        <span class="muted">Filter:</span>
+        <button class="btn ghost kbd" data-filter="all">all</button>
+        <button class="btn ghost kbd" data-filter="openfoam">openfoam</button>
+        <button class="btn ghost kbd" data-filter="matlab">matlab</button>
+        <button class="btn ghost kbd" data-filter="python">python</button>
+      </div>
+      <div id="projectGrid" class="grid cols-3"></div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="card">
+        <div class="row">
+          <div>
+            <strong>CFD</strong>
+            <p class="muted">Compressible/incompressible, RANS/LES/DES, VOF, multiphaseEuler</p>
+          </div>
+          <div>
+            <strong>Numerics</strong>
+            <p class="muted">SIMPLE, PISO, PIMPLE, low‑dissipation schemes, conjugate heat transfer</p>
+          </div>
+          <div>
+            <strong>Dev</strong>
+            <p class="muted">C++ (OpenFOAM), Python (NumPy, PyVista), MATLAB, Git/GitHub</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>Research Intern · IIT Patna</h3>
+          <div class="muted">Physics of Fluids project · 2023</div>
+          <p>Hybrid RANS‑LES on re‑entry capsule wakes using low‑dissipation schemes and finite‑rate thermo‑chemistry.</p>
+        </div>
+        <div class="tl-item">
+          <h3>Graduate Projects · OpenFOAM</h3>
+          <div class="muted">2024–2025</div>
+          <p>Film cooling on flat plate (M=0.5, DR=2), free‑surface flow past cylinder (interFoam), overset rotor meshes, and DNS of cylinder wakes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Mom, V.</strong> et al., <em>Physics of Fluids</em>, 2023 — Non‑equilibrium reacting flows with low‑dissipation Steger–Warming method. <a href="#" class="kbd">paper</a></li>
+        </ul>
+        <p class="muted">Add BibTeX or DOI links as needed.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid cols-2">
+        <form class="card" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+          <div style="height:10px"></div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="your@email.com" required />
+          <div style="height:10px"></div>
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" placeholder="How can I help?" rows="5" required></textarea>
+          <div style="height:14px"></div>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <div class="card">
+          <h3>Links</h3>
+          <p><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a></p>
+          <p>Prefer email? <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+          <p class="muted">Tip: replace placeholders in this section and upload <code>assets/Veasna_Mom_CV.pdf</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="space"></div>
+    <section aria-label="Back to top">
+      <a class="btn ghost" href="#top">↑ Back to top</a>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div class="row" style="justify-content:space-between">
+      <span>© <span id="year"></span> Veasna Mom</span>
+      <span class="muted">Built with vanilla HTML/CSS — host on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    // --- Personalize quickly ---
+    const CONFIG = {
+      name: "Veasna Mom",
+      role: "CFD · Scientific Computing",
+      email: "your.email@example.com",
+      github: "https://github.com/your-username",
+      linkedin: "https://www.linkedin.com/in/your-username",
+    };
+
+    // --- Projects data (edit here) ---
+    const PROJECTS = [
+      {
+        title: "Free‑Surface Flow Past Cylinder",
+        blurb: "Two‑phase interFoam simulation of a cylinder in water; post‑processed streamlines and vorticity in ParaView/MATLAB.",
+        tags: ["openfoam", "vof", "interFoam"],
+        link: "https://github.com/your-username/free-surface-cylinder"
+      },
+      {
+        title: "Film Cooling on Flat Plate",
+        blurb: "Compressible rhoSimpleFoam with k‑ε; M=0.5, density ratio 2.0, validated centerline effectiveness.",
+        tags: ["openfoam", "compressible"],
+        link: "https://github.com/your-username/film-cooling"
+      },
+      {
+        title: "LBM from Scratch (Python)",
+        blurb: "Educational D2Q9 LBM solver with visualization; modular code and docs.",
+        tags: ["python"],
+        link: "https://github.com/your-username/lbm-from-zero"
+      },
+      {
+        title: "MATLAB PIV Toolkit",
+        blurb: "Processing pipeline for time‑averaged PIV around cylinders with contour/streamline plots.",
+        tags: ["matlab", "piv"],
+        link: "https://github.com/your-username/matlab-piv"
+      },
+      {
+        title: "Overset Rotor (OpenFOAM)",
+        blurb: "Overset mesh setup and best‑practice notes for rotating machinery.",
+        tags: ["openfoam"],
+        link: "https://github.com/your-username/overset-rotor"
+      },
+      {
+        title: "Conjugate Heat Transfer",
+        blurb: "Solid–fluid coupling tutorial with steadyState discretization and orthogonal Laplacian.",
+        tags: ["openfoam", "cht"],
+        link: "https://github.com/your-username/cht-demo"
+      }
+    ];
+
+    // --- Render projects ---
+    const grid = document.getElementById('projectGrid');
+    const makeCard = (p) => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${p.title}</h3>
+        <p class="muted">${p.blurb}</p>
+        <div class="row" style="margin:10px 0">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+        <a class="btn" href="${p.link}" target="_blank" rel="noopener">View</a>
+      `;
+      card.dataset.tags = p.tags.join(' ').toLowerCase();
+      return card;
+    };
+    const draw = (filter='all') => {
+      grid.innerHTML = '';
+      PROJECTS.filter(p => filter==='all' || p.tags.map(t=>t.toLowerCase()).includes(filter))
+              .forEach(p => grid.appendChild(makeCard(p)));
+    };
+    draw();
+
+    // --- Filters ---
+    document.querySelectorAll('[data-filter]').forEach(btn => btn.addEventListener('click', (e)=>{
+      const f = e.currentTarget.getAttribute('data-filter');
+      draw(f);
+    }));
+
+    // --- Theme toggle (localStorage) ---
+    const themeBtn = document.getElementById('themeBtn');
+    const applyTheme = (t) => {
+      if(t==='light') document.documentElement.classList.add('light');
+      else document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', t);
+    };
+    const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark');
+    applyTheme(saved);
+    themeBtn.addEventListener('click', ()=>{
+      const now = document.documentElement.classList.contains('light') ? 'dark':'light';
+      applyTheme(now);
+    });
+
+    // --- Footer year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Quick personalization
+    document.title = `${CONFIG.name} · Portfolio`;
+    document.querySelectorAll('a[href="https://github.com/your-username"]').forEach(a=>a.href=CONFIG.github);
+    document.querySelectorAll('a[href="https://www.linkedin.com/in/your-username"]').forEach(a=>a.href=CONFIG.linkedin);
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href = `mailto:${CONFIG.email}`);
+  </script>
+
+  <!-- Optional: privacy‑friendly analytics (Plausible, Umami, etc.) -->
+</body>
+</html>
