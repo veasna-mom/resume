@@ -3,334 +3,119 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Veasna Mom — CV / Portfolio. CFD Research Intern. OpenFOAM · ANSYS Fluent · Film Cooling · Wave Energy" />
   <title>Veasna Mom — CV</title>
+  <meta name="description" content="Veasna Mom — M.Tech Mechanical Engineering (Thermal & Fluid) at IIT Bombay, CFD Specialist" />
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    :root { --accent: #06b6d4; --muted:#6b7280; }
-    [data-theme="dark"] { --bg: #0b1220; --card:#071127; --text:#e6eef8; --muted:#9ca3af; }
-    [data-theme="light"] { --bg: #f8fafc; --card:#ffffff; --text:#0f172a; --muted:#6b7280; }
-    body { background: var(--bg, #f8fafc); color: var(--text, #0f172a); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; transition: background .25s, color .25s; }
-    /* layout */
-    .sidebar { background: linear-gradient(180deg, rgba(6,182,212,0.08), rgba(59,130,246,0.04)); }
-    .avatar { width:110px; height:110px; object-fit:cover; border-radius:9999px; border:4px solid rgba(255,255,255,0.06); }
-    .muted { color: var(--muted); }
-    /* print-friendly: hide interactive only parts */
-    @media print {
-      header, .download-btn { display:none; }
-      body { background: white; color: black; }
+    body {
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+    }
+    .accent { color: #06b6d4; }
+    .sidebar {
+      background: linear-gradient(180deg, rgba(6,182,212,0.06), transparent);
+    }
+    .section-card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
   </style>
 </head>
-<body data-theme="light" class="min-h-screen">
+<body class="antialiased leading-relaxed">
 
-  <!-- Header (mobile) -->
-  <header class="md:hidden sticky top-0 z-40 bg-white/60 dark:bg-[#071127]/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-2 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center text-white font-semibold">VM</div>
-        <div class="text-sm font-semibold">Veasna Mom</div>
+  <div class="min-h-screen max-w-6xl mx-auto md:grid md:grid-cols-12 gap-8 px-4 py-8 md:py-12">
+    <!-- Sidebar -->
+    <aside class="md:col-span-4 lg:col-span-3 sticky top-24 self-start sidebar rounded-lg p-6">
+      <div class="flex flex-col items-center text-center">
+        <img src="assets/profile.jpg" alt="Veasna Mom" class="w-36 h-36 rounded-full object-cover border-4 border-white shadow-md mb-4" onerror="this.style.display='none'">
+        <h1 class="text-2xl font-bold">Veasna Mom</h1>
+        <p class="text-sm text-slate-600 mt-1">M.Tech — Mechanical Engineering (Thermal & Fluid), IIT Bombay</p>
       </div>
-      <div class="flex items-center gap-2">
-        <button id="themeToggle" class="px-3 py-1 rounded bg-slate-100 dark:bg-slate-800 text-sm">Dark</button>
-      </div>
-    </div>
-  </header>
 
-  <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-12 gap-8">
-
-    <!-- LEFT SIDEBAR -->
-    <aside class="md:col-span-4 lg:col-span-3 sticky top-6 self-start">
-      <div class="sidebar p-6 rounded-xl shadow">
-        <!-- Profile -->
-        <div class="flex flex-col items-center text-center">
-          <img src="assets/profile.jpg" alt="Veasna Mom" class="avatar shadow-md mb-4" onerror="this.style.display='none'">
-          <h1 class="text-2xl font-extrabold">Veasna Mom</h1>
-          <p class="text-sm muted mt-1">CFD Research Intern · OpenFOAM · ANSYS Fluent</p>
+      <div class="mt-6 space-y-3">
+        <a href="CV_Supplementary.pdf" class="block text-center px-4 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition">Download CV</a>
+        
+        <div class="mt-3 text-sm">
+          <div class="font-medium">Contact</div>
+          <div class="text-slate-600 mt-1">Ahmedabad, India</div>
+          <div class="mt-1"><a href="mailto:veasnaajar@gmail.com">veasnaajar@gmail.com</a></div>
+          <div class="mt-1"><a href="https://wa.me/+919624957569" target="_blank">+91 96249 57569</a></div>
         </div>
 
-        <!-- Quick info -->
-        <div class="mt-6 space-y-2 text-sm">
-          <div><strong>Location</strong><div class="muted text-sm">Ahmedabad, India</div></div>
-          <div><strong>Permanent Address</strong><div class="muted text-sm">Kralanh Pi Village, Svay Rieng Province, Cambodia</div></div>
-          <div><strong>Phone</strong><div class="muted text-sm"><a href="https://wa.me/+919624957569" target="_blank" class="hover:underline">+91 96249 57569</a></div></div>
-          <div><strong>Email</strong><div class="muted text-sm"><a href="mailto:veasnaajar@gmail.com" class="hover:underline">veasnaajar@gmail.com</a></div></div>
-          <div><strong>LinkedIn</strong><div class="muted text-sm"><a href="https://www.linkedin.com/in/veasna-mom" target="_blank" class="hover:underline">linkedin.com/in/veasna-mom</a></div></div>
-          <div><strong>GitHub</strong><div class="muted text-sm"><a href="https://github.com/sna-hub" target="_blank" class="hover:underline">github.com/sna-hub</a></div></div>
-          <div><strong>ResearchGate</strong><div class="muted text-sm"><a href="https://www.researchgate.net/profile/Mom-Veasna" target="_blank" class="hover:underline">researchgate.net/profile/Mom-Veasna</a></div></div>
-        </div>
-
-        <!-- Download / Personal -->
-        <div class="mt-6 flex gap-2">
-          <a href="CV_Supplementary.pdf" class="download-btn flex-1 text-center px-3 py-2 bg-teal-500 text-white rounded-md shadow hover:bg-teal-600" target="_blank">Download CV</a>
-        </div>
-
-        <hr class="my-6 border-slate-200 dark:border-slate-700">
-
-        <!-- Personal Info -->
-        <div class="text-sm space-y-1">
-          <div><strong>Full Name</strong><div class="muted">VEASNA MOM</div></div>
-          <div><strong>Birth Date</strong><div class="muted">08 February 2002</div></div>
-          <div><strong>Nationality</strong><div class="muted">Cambodian</div></div>
-          <div><strong>Languages</strong><div class="muted">Khmer (native), English (proficient), French (beginner)</div></div>
-        </div>
-
-        <hr class="my-6 border-slate-200 dark:border-slate-700">
-
-        <!-- Skills compact -->
-        <div>
-          <h4 class="text-sm font-semibold mb-2">Skills</h4>
-          <div class="grid grid-cols-2 gap-2 text-xs">
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">OpenFOAM (v2312)</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">ANSYS Fluent</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">Paraview · Tecplot</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">Python · MATLAB</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">C++ (OpenFOAM)</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">LaTeX</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">ICEM CFD (meshing)</div>
-            <div class="p-2 bg-white dark:bg-[#071127] rounded">HPC / MPI</div>
-          </div>
-        </div>
-
-        <hr class="my-6 border-slate-200 dark:border-slate-700">
-
-        <!-- Certificates compact -->
-        <div>
-          <h4 class="text-sm font-semibold mb-2">Selected Certificates</h4>
-          <ul class="text-sm muted space-y-2">
-            <li><a href="https://coursera.org/verify/CKGK8TTVDEU3" target="_blank" class="hover:underline">Applied CFD — Coursera (Siemens)</a></li>
-            <li><a href="https://fossee.in/semester-internship/2024" target="_blank" class="hover:underline">FOSSEE Semester Internship — OpenFOAM</a></li>
-            <li><a href="https://flowthermolab.com/verify/" target="_blank" class="hover:underline">CFD Foundation — Flowthermolab</a></li>
+        <div class="mt-4 text-sm">
+          <div class="font-medium">Links</div>
+          <ul class="mt-2 space-y-1 text-slate-600">
+            <li><a href="https://github.com/sna-hub" target="_blank" class="hover:underline">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/veasna-mom" target="_blank" class="hover:underline">LinkedIn</a></li>
+            <li><a href="https://www.researchgate.net/profile/Mom-Veasna" target="_blank" class="hover:underline">ResearchGate</a></li>
           </ul>
         </div>
 
-        <div class="mt-6 text-xs muted">© <span id="year-left"></span> Veasna Mom</div>
+        <div class="mt-4">
+          <div class="font-medium text-sm">Skills</div>
+          <div class="mt-2 grid grid-cols-2 gap-2 text-sm text-slate-600">
+            <div>OpenFOAM</div><div>ANSYS Fluent</div>
+            <div>Python</div><div>MATLAB</div>
+            <div>C++</div><div>ICEM CFD</div>
+            <div>HPC</div><div>k-ε · VOF</div>
+          </div>
+        </div>
       </div>
     </aside>
 
-    <!-- RIGHT MAIN CONTENT -->
-    <main class="md:col-span-8 lg:col-span-9">
-      <div class="p-6 bg-white dark:bg-[#071127] rounded-xl shadow space-y-6">
-        <!-- About -->
-        <section id="about">
-          <h2 class="text-2xl font-bold">About Me</h2>
-          <p class="muted mt-2">
-            Overcoming financial challenges, I have pursued academic growth and research opportunities.
-            I am an undergraduate in Mechanical Engineering (Gujarat Technological University, CGPA 8.61/10)
-            with strong experience in OpenFOAM and ANSYS Fluent. My research interests include Computational Fluid Dynamics,
-            Heat Transfer, Multiphase Flow, and integrating Machine Learning with CFD. I completed internships at FOSSEE (IIT Bombay)
-            and IIT Patna where I worked on film cooling, vortex shedding, multiphase modeling, and HPC workflows.
-          </p>
-        </section>
+    <!-- Main content -->
+    <main class="md:col-span-8 lg:col-span-9 space-y-8">
+      
+      <!-- About -->
+      <section id="about" class="section-card">
+        <h2 class="text-2xl font-bold">About</h2>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          I am currently pursuing an <strong>M.Tech in Mechanical Engineering with specialization in Thermal and Fluid Engineering at IIT Bombay</strong>.
+          My research focuses on CFD, heat transfer, multiphase flows, and applying machine learning to fluid dynamics problems.
+          I have prior experience with OpenFOAM and ANSYS Fluent from internships at IIT Bombay (FOSSEE) and IIT Patna.
+        </p>
+      </section>
 
-        <hr class="border-slate-100 dark:border-slate-800">
-
-        <!-- Projects -->
-        <section id="projects">
-          <h2 class="text-2xl font-bold">Projects</h2>
-
-          <article class="mt-4">
-            <h3 class="text-lg font-semibold">Design of Ocean Wave Energy Harvesting System Using Piezoelectric</h3>
-            <div class="muted text-sm">Supervisors: Dr. Lav Kaushik, Dr. Liril Silvi — Research Grant ₹80,000</div>
-            <p class="mt-2 muted text-sm">
-              Performed vibration-induced simulations coupled with a piezoelectric model in Ansys Mechanical.
-              Responsible for system modelling, dynamic analysis and documentation. Demonstrated innovation in wave-to-electricity conversion and secured seed funding.
-            </p>
-          </article>
-
-          <article class="mt-4">
-            <h3 class="text-lg font-semibold">Numerical Analysis of Air Film Cooling (OpenFOAM)</h3>
-            <div class="muted text-sm">FOSSEE, IIT Bombay — OpenFOAM v2312</div>
-            <p class="mt-2 muted text-sm">
-              Reproduced and validated film-cooling results from literature (Li & Wang) using OpenFOAM. Implemented a 2D flat plate case using blockMesh,
-              used buoyantBoussinesqSimpleFoam for an incompressible conceptual study, and performed post-processing in ParaView and MATLAB.
-              Investigated effects of blowing ratio, mainstream temperature, and injection angle on adiabatic film cooling effectiveness.
-            </p>
-            <div class="mt-2 text-xs flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-gray-100 dark:bg-[#0b1220]">OpenFOAM v2312</span>
-              <span class="px-2 py-1 rounded bg-gray-100 dark:bg-[#0b1220]">ParaView</span>
-              <a href="https://cfd.fossee.in/research-migration-project/research-migration-run/51" target="_blank" class="px-2 py-1 rounded bg-gray-100 dark:bg-[#0b1220]">Project Link</a>
-            </div>
-          </article>
-
-          <article class="mt-4">
-            <h3 class="text-lg font-semibold">Effect of Hole Geometry on Film Cooling Effectiveness</h3>
-            <div class="muted text-sm">Compressible flow simulations using OpenFOAM — k-ε turbulence model</div>
-            <p class="mt-2 muted text-sm">
-              Conducted simulations to study how coolant hole geometry (cylindrical vs fan-shaped) affects film cooling performance at subsonic conditions.
-              Validated numerical results against experimental data and identified fan-shaped holes improve film cooling effectiveness.
-            </p>
-          </article>
-        </section>
-
-        <hr class="border-slate-100 dark:border-slate-800">
-
-        <!-- Experience -->
-        <section id="experience">
-          <h2 class="text-2xl font-bold">Experience</h2>
-
-          <div class="mt-4 space-y-4">
-            <div>
-              <h3 class="font-semibold">CFD Research Intern — Indian Institute of Technology Patna</h3>
-              <div class="muted text-sm">Dec 2024 – Present</div>
-              <ul class="mt-2 list-disc list-inside muted text-sm">
-                <li>Numerical investigation of vortex shedding behind cylinders.</li>
-                <li>Implemented Gas-Liquid (VOF) two-phase models on ANSYS and OpenFOAM.</li>
-                <li>Coded wave input models in OpenFOAM; data post-processing in Python, ParaView, Tecplot.</li>
-                <li>Performed HPC runs and parallel computing workflows.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="font-semibold">CFD Research Intern — FOSSEE (IIT Bombay)</h3>
-              <div class="muted text-sm">Mar 2024 – Dec 2024</div>
-              <ul class="mt-2 list-disc list-inside muted text-sm">
-                <li>Numerical analysis of gas turbine film cooling and validation against published results.</li>
-                <li>Parallel computing, mesh generation (blockMesh), and report/paper writing.</li>
-                <li>Worked extensively with OpenFOAM and ParaView for migration and validation projects.</li>
-              </ul>
-            </div>
+      <!-- Education -->
+      <section id="education" class="section-card">
+        <h2 class="text-2xl font-bold">Education</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-4 text-slate-600">
+          <div>
+            <div class="font-semibold">M.Tech — Mechanical Engineering (Thermal & Fluid)</div>
+            <div class="text-sm">IIT Bombay — Ongoing</div>
           </div>
-        </section>
-
-        <hr class="border-slate-100 dark:border-slate-800">
-
-        <!-- Education -->
-        <section id="education">
-          <h2 class="text-2xl font-bold">Education</h2>
-          <div class="mt-4 space-y-3 muted text-sm">
-            <div>
-              <strong>Bachelor of Mechanical Engineering</strong> — Gujarat Technological University<br>
-              CGPA: 8.61 / 10
-            </div>
-            <div>
-              <strong>Sophomore (Mechanical Engineering)</strong> — Institute of Technology of Cambodia (2019–2021)<br>
-              GPA: 3.5 / 4.0
-            </div>
-            <div>
-              <strong>High School</strong> — Hunsen Chrey Thom High School, Svay Rieng
-            </div>
+          <div>
+            <div class="font-semibold">B.Tech — Mechanical Engineering</div>
+            <div class="text-sm">Gujarat Technological University — CGPA 8.61/10</div>
           </div>
-        </section>
-
-        <hr class="border-slate-100 dark:border-slate-800">
-
-        <!-- Additional sections: Tools, Methods, Observations -->
-        <section id="tech">
-          <h2 class="text-2xl font-bold">Tools & Methods</h2>
-          <div class="mt-3 grid md:grid-cols-2 gap-4 muted text-sm">
-            <div>
-              <h4 class="font-semibold">CFD Tools</h4>
-              <ul class="list-disc list-inside mt-2">
-                <li>OpenFOAM (v2312) — blockMesh, buoyantBoussinesqSimpleFoam, reconstruction and parallel runs</li>
-                <li>ANSYS Fluent — VOF, multiphase, conjugate heat transfer workflows</li>
-                <li>ParaView, Tecplot — visualization & data extraction</li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-semibold">Numerical Methods</h4>
-              <ul class="list-disc list-inside mt-2">
-                <li>RANS (k-ε) turbulence modeling with enhanced wall treatments</li>
-                <li>VOF multiphase simulations, incompressible & compressible solvers</li>
-                <li>Mesh grading, hexahedral blocks, and first-cell resolution (y+ handling)</li>
-              </ul>
-            </div>
+          <div>
+            <div class="font-semibold">Institute of Technology of Cambodia</div>
+            <div class="text-sm">2019–2021 — GPA 3.5/4.0</div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <hr class="border-slate-100 dark:border-slate-800">
+      <!-- Projects -->
+      <section id="projects" class="section-card">
+        <h2 class="text-2xl font-bold">Selected Projects</h2>
+        <article class="mt-4">
+          <h3 class="font-semibold">Ocean Wave Energy Harvesting — Piezoelectric</h3>
+          <p class="text-slate-600 mt-2">Designed vibration-induced simulation coupled with a piezoelectric model in Ansys Mechanical.</p>
+        </article>
+        <article class="mt-4">
+          <h3 class="font-semibold">Numerical Analysis of Air Film Cooling (OpenFOAM)</h3>
+          <p class="text-slate-600 mt-2">Reproduced film-cooling results using OpenFOAM and validated with ANSYS Fluent; studied blowing ratio and injection angle effects.</p>
+        </article>
+      </section>
 
-        <!-- Certificates full -->
-        <section id="certificates">
-          <h2 class="text-2xl font-bold">Certificates & Training</h2>
-          <div class="mt-3 grid md:grid-cols-2 gap-4 muted text-sm">
-            <div class="p-3 bg-gray-50 dark:bg-[#061226] rounded">
-              <div class="font-semibold">FOSSEE Semester Long Internship — Numerical Analysis of Air Film Cooling</div>
-              <div class="mt-1">FOSSEE, IIT Bombay — Project available: <a href="https://fossee.in/semester-internship/2024" target="_blank" class="hover:underline">fossee.in (Project)</a></div>
-            </div>
-            <div class="p-3 bg-gray-50 dark:bg-[#061226] rounded">
-              <div class="font-semibold">Applied Computational Fluid Dynamics</div>
-              <div class="mt-1">Coursera (Siemens) — <a href="https://coursera.org/verify/CKGK8TTVDEU3" target="_blank" class="hover:underline">Verification</a></div>
-            </div>
-            <div class="p-3 bg-gray-50 dark:bg-[#061226] rounded">
-              <div class="font-semibold">CFD Foundation Course</div>
-              <div class="mt-1">Flowthermolab — <a href="https://flowthermolab.com/verify/" target="_blank" class="hover:underline">Verify</a></div>
-            </div>
-            <div class="p-3 bg-gray-50 dark:bg-[#061226] rounded">
-              <div class="font-semibold">Numerical Methods for Engineers</div>
-              <div class="mt-1">HKUST (Coursera) — <a href="https://coursera.org/verify/UCK49575BMP5" target="_blank" class="hover:underline">Verification</a></div>
-            </div>
-          </div>
-        </section>
-
-        <hr class="border-slate-100 dark:border-slate-800">
-
-        <!-- References -->
-        <section id="references">
-          <h2 class="text-2xl font-bold">References</h2>
-          <div class="mt-3 muted text-sm space-y-2">
-            <div><strong>Dr. Sathi Rajesh Reddy</strong><br>Assistant Professor, Mechanical Engineering — Shiv Nadar University<br><a href="mailto:sathi.reddy@snu.edu.in" class="hover:underline">sathi.reddy@snu.edu.in</a></div>
-            <div><strong>Dr. Vivek Patel</strong><br>Associate Professor, HOD Mechanical Engineering — Gujarat Technological University<br><a href="mailto:vivek.patel@gtu.edu.in" class="hover:underline">vivek.patel@gtu.edu.in</a></div>
-          </div>
-        </section>
-
-        <div class="mt-6 text-xs muted">Notes: This web-CV reproduces content from the supplied CV. For full downloadable CV click the button on the left.</div>
-      </div>
-
-      <!-- bottom actions -->
-      <div class="mt-6 flex gap-3">
-        <a href="CV_Supplementary.pdf" target="_blank" class="px-4 py-2 rounded bg-teal-500 text-white">Download Full CV (PDF)</a>
-        <a href="https://github.com/sna-hub" target="_blank" class="px-4 py-2 rounded border">View GitHub</a>
-        <a href="mailto:veasnaajar@gmail.com" class="px-4 py-2 rounded border">Email</a>
-      </div>
     </main>
   </div>
 
-  <footer class="max-w-6xl mx-auto px-4 py-6 text-sm muted">
-    © <span id="year"></span> Veasna Mom · Built for GitHub Pages
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('year').innerText = new Date().getFullYear();
-    document.getElementById('year-left').innerText = new Date().getFullYear();
-
-    // Theme toggle: persist
-    const themeBtn = document.getElementById('themeToggle');
-    const body = document.body;
-    const THEME_KEY = 'veasna_cv_theme';
-    const saved = localStorage.getItem(THEME_KEY) || 'light';
-    document.body.setAttribute('data-theme', saved);
-    if(saved === 'dark') body.classList.add('dark');
-
-    function applyTheme(t) {
-      document.body.setAttribute('data-theme', t);
-      if (t === 'dark') { body.classList.add('dark'); themeBtn.textContent = 'Light'; }
-      else { body.classList.remove('dark'); themeBtn.textContent = 'Dark'; }
-      localStorage.setItem(THEME_KEY, t);
-    }
-
-    applyTheme(saved);
-
-    themeBtn.addEventListener('click', () => {
-      const next = document.body.classList.contains('dark') ? 'light' : 'dark';
-      applyTheme(next);
-    });
-
-    // Simple reveal on scroll
-    const revealEls = document.querySelectorAll('main section, main article, main div.p-3');
-    function reveal() {
-      const trigger = window.innerHeight * 0.92;
-      document.querySelectorAll('main section, main article, main div.p-3').forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.top < trigger) el.classList.add('opacity-100', 'translate-y-0');
-      });
-    }
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-  </script>
 </body>
 </html>
