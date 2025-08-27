@@ -8,12 +8,13 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #1e293b; }
-    .accent { color: #2563eb; } /* blue */
-    .sidebar { background: #fff; border-right: 1px solid #e5e7eb; }
+    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #1e293b; scroll-behavior: smooth; }
+    .accent { color: #2563eb; }
+    .sidebar { background: #fff; border-right: 1px solid #e5e7eb; height: 100vh; position: sticky; top: 0; }
     .sidebar a:hover { color: #2563eb; }
     .card { background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); padding: 1.25rem; margin-bottom: 1.5rem; }
     .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+    nav a.active { color: #2563eb; font-weight: bold; }
   </style>
 </head>
 <body class="flex flex-col md:flex-row">
@@ -30,20 +31,34 @@
         <a href="mailto:veasna.mom.cfd@gmail.com" class="text-blue-600 hover:underline text-sm">veasna.mom.cfd@gmail.com</a>
       </div>
 
+      <!-- Social Links -->
       <div class="space-y-1 text-center mb-4">
         <a href="https://github.com/sna-hub" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">GitHub</a>
         <a href="https://www.linkedin.com/in/veasna-mom" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">LinkedIn</a>
         <a href="https://www.researchgate.net/profile/Mom-Veasna" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">ResearchGate</a>
       </div>
 
-      <a href="CV_Supplementary.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">Download CV</a>
+      <a href="CV_Supplementary.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 mb-6">Download CV</a>
+
+      <!-- Navigation Links -->
+      <nav class="w-full text-center space-y-2">
+        <a href="#about" class="block text-gray-600 hover:text-blue-600">About</a>
+        <a href="#interests" class="block text-gray-600 hover:text-blue-600">Research Interests</a>
+        <a href="#experience" class="block text-gray-600 hover:text-blue-600">Experience</a>
+        <a href="#projects" class="block text-gray-600 hover:text-blue-600">Projects</a>
+        <a href="#publications" class="block text-gray-600 hover:text-blue-600">Publications</a>
+        <a href="#skills" class="block text-gray-600 hover:text-blue-600">Skills</a>
+        <a href="#awards" class="block text-gray-600 hover:text-blue-600">Awards</a>
+        <a href="#certificates" class="block text-gray-600 hover:text-blue-600">Certificates</a>
+        <a href="#teaching" class="block text-gray-600 hover:text-blue-600">Teaching</a>
+      </nav>
     </div>
   </aside>
 
   <!-- Main Content -->
   <main class="flex-1 p-6 md:p-10 overflow-auto">
-    <!-- Research Summary -->
-    <section class="card">
+    <!-- About -->
+    <section id="about" class="card">
       <h2 class="section-title">Research & Academic Summary</h2>
       <p class="text-gray-600">
         M.Tech candidate in Mechanical Engineering (Thermal & Fluid) at IIT Bombay. Research focus: Computational Fluid Dynamics (CFD), film cooling, heat transfer,
@@ -52,7 +67,7 @@
     </section>
 
     <!-- Research Interests -->
-    <section class="card">
+    <section id="interests" class="card">
       <h2 class="section-title">Research Interests</h2>
       <ul class="list-disc list-inside text-gray-600">
         <li>Film cooling & turbine blade heat transfer</li>
@@ -64,7 +79,7 @@
     </section>
 
     <!-- Research Experience -->
-    <section class="card">
+    <section id="experience" class="card">
       <h2 class="section-title">Research Experience</h2>
       <div class="mb-4">
         <h3 class="font-semibold">CFD Research Intern — IIT Patna</h3>
@@ -83,7 +98,7 @@
     </section>
 
     <!-- Projects -->
-    <section class="card">
+    <section id="projects" class="card">
       <h2 class="section-title">Selected Projects</h2>
       <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
         <li>Ocean Wave Energy Harvesting — Piezoelectric (Research Grant ₹80,000)</li>
@@ -93,14 +108,14 @@
     </section>
 
     <!-- Publications -->
-    <section class="card">
+    <section id="publications" class="card">
       <h2 class="section-title">Publications & Presentations</h2>
       <p class="text-gray-600 text-sm mb-2"><strong>Conference:</strong> Presented at ICON-GTSD-2.0 (Mar 2024).</p>
       <p class="text-gray-600 text-sm">FOSSEE Research Migration report: "Numerical Analysis of Air Film Cooling" (June 2024).</p>
     </section>
 
     <!-- Skills -->
-    <section class="card">
+    <section id="skills" class="card">
       <h2 class="section-title">Technical Skills</h2>
       <ul class="list-disc list-inside text-gray-600 text-sm">
         <li>CFD Tools: OpenFOAM, ANSYS Fluent, ParaView</li>
@@ -110,13 +125,26 @@
     </section>
 
     <!-- Awards -->
-    <section class="card">
+    <section id="awards" class="card">
       <h2 class="section-title">Awards & Grants</h2>
-      <p class="text-gray-600 text-sm">Seed Money Grant ₹80,000 — Piezoelectric Ocean Wave Energy Project.</p>
+      <ul class="list-disc list-inside text-gray-600 text-sm">
+        <li>Seed Money Grant ₹80,000 — Piezoelectric Ocean Wave Energy Project</li>
+      </ul>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates" class="card">
+      <h2 class="section-title">Certificates</h2>
+      <ul class="list-disc list-inside text-gray-600 text-sm">
+        <li>FOSSEE Internship Certificate — OpenFOAM Research Migration (IIT Bombay)</li>
+        <li>Coursera: Applied CFD (Siemens)</li>
+        <li>Coursera: Numerical Methods (HKUST)</li>
+        <li>Coursera: Fluid-Structure Interaction (École Polytechnique)</li>
+      </ul>
     </section>
 
     <!-- Teaching -->
-    <section class="card">
+    <section id="teaching" class="card">
       <h2 class="section-title">Teaching & Mentoring</h2>
       <p class="text-gray-600 text-sm">
         Volunteered as a Math & Physics tutor at Institute of Technology of Cambodia (2020–2021).
