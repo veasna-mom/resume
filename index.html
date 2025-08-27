@@ -150,7 +150,7 @@
 
     <section id="about">
       <h2>About</h2>
-      <p>I'm a simulation enthusiast who works across OpenFOAM, Ansys Fluent, and custom Python/Matlab tooling. I value clean numerics, careful grid generation, and transparent post‑processing pipelines. Recently, I’ve explored multiphase Euler models (oil–water–air), overset meshes for rotors, and DNS for cylinder wakes.</p>
+      <p>I am enthusiast about broad range of CFD application such as Compressible Flow, Multiphase Fow, Heat Transfer. I love numerics for CFD. My vision is to learn, develope, and solve problems</p>
       <div class="row" style="margin-top:10px">
         <span class="chip">OpenFOAM</span><span class="chip">Ansys Fluent</span><span class="chip">ParaView</span><span class="chip">PyVista</span><span class="chip">PyFoam</span><span class="chip">C++</span><span class="chip">MATLAB</span>
       </div>
@@ -178,11 +178,11 @@
           </div>
           <div>
             <strong>Numerics</strong>
-            <p class="muted">SIMPLE, PISO, PIMPLE, low‑dissipation schemes, conjugate heat transfer</p>
+            <p class="muted">SIMPLE, PISO, PIMPLE,</p>
           </div>
           <div>
             <strong>Dev</strong>
-            <p class="muted">C++ (OpenFOAM), Python (NumPy, PyVista), MATLAB, Git/GitHub</p>
+            <p class="muted">C++ (OpenFOAM), Python (NumPy, PyVista), MATLAB,ML for CFD </p>
           </div>
         </div>
       </div>
@@ -194,35 +194,27 @@
         <div class="tl-item">
           <h3>CFD Research Intern · IIT Patna</h3>
           <div class="muted">Physics of Fluids </div>
-          <p>Hybrid RANS‑LES on re‑entry capsule wakes using low‑dissipation schemes and finite‑rate thermo‑chemistry.</p>
+          <p>Investigation of Free Surface Flow at Low Reynolds Number.</p>
         </div>
         <div class="tl-item">
           <h3>Graduate Projects · OpenFOAM</h3>
           <div class="muted">2024–2025</div>
-          <p>Film cooling on flat plate (M=0.5, DR=2), free‑surface flow past cylinder (interFoam), overset rotor meshes, and DNS of cylinder wakes.</p>
+          <p>Compressible Flow Film Cooling under Subsonic Region </p>
         </div>
       </div>
     </section>
 
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Mom, V.</strong> et al., <em>Physics of Fluids</em>, 2023 — Non‑equilibrium reacting flows with low‑dissipation Steger–Warming method. <a href="#" class="kbd">paper</a></li>
-        </ul>
-        <p class="muted">Add BibTeX or DOI links as needed.</p>
-      </div>
-    </section>
+  
 
     <section id="contact">
       <h2>Contact</h2>
       <div class="grid cols-2">
-        <form class="card" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+        <form class="card" action="mailto:veasna.mom.cfd@gmail.com" method="post" enctype="text/plain">
           <label for="name">Name</label>
-          <input id="name" name="name" placeholder="Your name" required />
+          <input id="name" name="name" placeholder="Veasna Mom" required />
           <div style="height:10px"></div>
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="your@email.com" required />
+          <input id="email" name="email" type="email" placeholder="veasna.mom.cfd@gmail.com" required />
           <div style="height:10px"></div>
           <label for="msg">Message</label>
           <textarea id="msg" name="message" placeholder="How can I help?" rows="5" required></textarea>
@@ -276,18 +268,6 @@
         link: "https://github.com/your-username/film-cooling"
       },
       {
-        title: "LBM from Scratch (Python)",
-        blurb: "Educational D2Q9 LBM solver with visualization; modular code and docs.",
-        tags: ["python"],
-        link: "https://github.com/your-username/lbm-from-zero"
-      },
-      {
-        title: "MATLAB PIV Toolkit",
-        blurb: "Processing pipeline for time‑averaged PIV around cylinders with contour/streamline plots.",
-        tags: ["matlab", "piv"],
-        link: "https://github.com/your-username/matlab-piv"
-      },
-      {
         title: "Overset Rotor (OpenFOAM)",
         blurb: "Overset mesh setup and best‑practice notes for rotating machinery.",
         tags: ["openfoam"],
@@ -335,10 +315,10 @@
       else document.documentElement.classList.remove('light');
       localStorage.setItem('theme', t);
     };
-    const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark');
+    const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light');
     applyTheme(saved);
     themeBtn.addEventListener('click', ()=>{
-      const now = document.documentElement.classList.contains('light') ? 'dark':'light';
+      const now = document.documentElement.classList.contains('light') ? 'light';
       applyTheme(now);
     });
 
