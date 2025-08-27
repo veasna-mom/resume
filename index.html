@@ -5,151 +5,360 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Veasna Mom — Academic Portfolio</title>
   <meta name="description" content="Veasna Mom — M.Tech (Thermal & Fluid), IIT Bombay. Research: CFD, Heat Transfer, Multiphase Flows, HPC." />
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="author" content="Veasna Mom">
+
+  <!-- Inline minimal reset + fonts (system fonts for speed) -->
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #1e293b; scroll-behavior: smooth; }
-    .accent { color: #2563eb; }
-    .sidebar { background: #fff; border-right: 1px solid #e5e7eb; height: 100vh; position: sticky; top: 0; }
-    .sidebar a:hover { color: #2563eb; }
-    .card { background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); padding: 1.25rem; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-    nav a.active { color: #2563eb; font-weight: bold; }
+    :root{
+      --bg: #f9fafb;
+      --text:#1e293b;
+      --muted:#6b7280;
+      --blue:#2563eb;
+      --card:#ffffff;
+      --shadow: 0 6px 18px rgba(15,23,42,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      width:280px;
+      background:var(--card);
+      border-right:1px solid #e6e9ef;
+      padding:28px 20px;
+      position:fixed;
+      height:100vh;
+      overflow:auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:center;
+    }
+    .profile-img{
+      width:132px;
+      height:132px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid var(--blue);
+      box-shadow: var(--shadow);
+      background:#f0f4ff;
+    }
+    .name{margin:12px 0 4px 0;font-size:20px;font-weight:700;text-align:center}
+    .subtitle{font-size:13px;color:var(--muted);text-align:center;margin:0}
+    .contact{margin-top:10px;text-align:center;font-size:14px;color:var(--muted)}
+    .contact a{color:var(--blue);text-decoration:none}
+    .btn-cv{
+      display:inline-block;margin-top:12px;background:var(--blue);color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:13px;
+      box-shadow:0 6px 18px rgba(37,99,235,0.12);
+    }
+
+    /* Nav links */
+    .nav{
+      width:100%;
+      margin-top:8px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:flex-start;
+    }
+    .nav a{
+      width:100%;
+      display:block;
+      padding:8px 10px;
+      color:#374151;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:14px;
+    }
+    .nav a:hover{background:#f1f5ff;color:var(--blue)}
+    .nav a.active{background:#e7f0ff;color:var(--blue);font-weight:600}
+
+    /* Social icons row */
+    .social{display:flex;gap:12px;margin-top:auto}
+    .social a{color:#374151;text-decoration:none;font-size:18px;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px}
+    .social a:hover{background:#f1f5ff;color:var(--blue)}
+
+    /* Main content */
+    main{
+      margin-left:280px;
+      padding:36px 40px;
+      flex:1;
+      max-width:1100px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:10px;
+      box-shadow:var(--shadow);
+      padding:20px;
+      margin-bottom:22px;
+    }
+    h1,h2,h3{margin:0}
+    h2{color:var(--blue);font-size:20px;margin-bottom:10px}
+    p,li{color:var(--text);line-height:1.5}
+    .muted{color:var(--muted)}
+
+    /* Lists */
+    ul{padding-left:20px;margin:8px 0}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .sidebar{position:relative;width:100%;height:auto;border-right:0;display:flex;flex-direction:row;align-items:center;padding:12px;gap:12px}
+      .profile-img{width:64px;height:64px;border-width:3px}
+      .name{font-size:16px}
+      main{margin-left:0;padding:18px}
+      .nav{flex-direction:row;gap:6px;overflow:auto;padding-top:6px;width:100%}
+      .nav a{white-space:nowrap;padding:8px 10px;font-size:13px}
+      .social{display:none}
+      .btn-cv{padding:6px 10px;font-size:13px}
+    }
+
+    /* small helpers */
+    .section-title{font-size:16px;font-weight:700;margin-bottom:8px}
+    .meta{font-size:13px;color:var(--muted)}
+    .small{font-size:13px}
+    .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media(max-width:700px){.two-col{grid-template-columns:1fr}}
   </style>
 </head>
-<body class="flex flex-col md:flex-row">
+<body>
 
-  <!-- Sidebar -->
-  <aside class="sidebar w-full md:w-1/4 lg:w-1/5 p-6 flex-shrink-0">
-    <div class="flex flex-col items-center">
-      <img src="assets/profile.jpg" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover border-4 border-blue-500 mb-4">
-      <h1 class="text-xl font-bold text-center">Veasna Mom</h1>
-      <p class="text-sm text-gray-500 text-center mb-4">M.Tech — Mechanical (Thermal & Fluid), IIT Bombay</p>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Sidebar">
+    <div style="text-align:center;width:100%">
+      <img src="assets/profile.jpg" alt="Veasna Mom profile photo" class="profile-img" onerror="this.style.display='none'">
+      <div class="name">Veasna Mom</div>
+      <div class="subtitle">M.Tech — Mechanical Engineering (Thermal & Fluid), IIT Bombay</div>
 
-      <div class="text-center mb-4">
-        <p class="text-sm text-gray-600">Ahmedabad, India</p>
-        <a href="mailto:veasna.mom.cfd@gmail.com" class="text-blue-600 hover:underline text-sm">veasna.mom.cfd@gmail.com</a>
+      <div class="contact" style="margin-top:10px">
+        <div class="muted">Ahmedabad, India</div>
+        <div style="margin-top:6px"><a href="mailto:veasna.mom.cfd@gmail.com">veasna.mom.cfd@gmail.com</a></div>
       </div>
 
-      <!-- Social Links -->
-      <div class="space-y-1 text-center mb-4">
-        <a href="https://github.com/sna-hub" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">GitHub</a>
-        <a href="https://www.linkedin.com/in/veasna-mom" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">LinkedIn</a>
-        <a href="https://www.researchgate.net/profile/Mom-Veasna" target="_blank" class="block text-gray-600 hover:text-blue-600 text-sm">ResearchGate</a>
-      </div>
+      <a class="btn-cv" href="CV_Supplementary.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
 
-      <a href="CV_Supplementary.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 mb-6">Download CV</a>
+    <nav class="nav" aria-label="Main navigation" id="navLinks" style="width:100%;margin-top:12px">
+      <a href="#about">About</a>
+      <a href="#interests">Research Interests</a>
+      <a href="#experience">Research Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+      <a href="#awards">Awards & Grants</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-      <!-- Navigation Links -->
-      <nav class="w-full text-center space-y-2">
-        <a href="#about" class="block text-gray-600 hover:text-blue-600">About</a>
-        <a href="#interests" class="block text-gray-600 hover:text-blue-600">Research Interests</a>
-        <a href="#experience" class="block text-gray-600 hover:text-blue-600">Experience</a>
-        <a href="#projects" class="block text-gray-600 hover:text-blue-600">Projects</a>
-        <a href="#publications" class="block text-gray-600 hover:text-blue-600">Publications</a>
-        <a href="#skills" class="block text-gray-600 hover:text-blue-600">Skills</a>
-        <a href="#awards" class="block text-gray-600 hover:text-blue-600">Awards</a>
-        <a href="#certificates" class="block text-gray-600 hover:text-blue-600">Certificates</a>
-        <a href="#teaching" class="block text-gray-600 hover:text-blue-600">Teaching</a>
-      </nav>
+    <div class="social" aria-hidden="false" style="margin-top:16px">
+      <!-- simple inline SVG icons -->
+      <a href="https://github.com/sna-hub" target="_blank" title="GitHub" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.75 5.48.75 11.74c0 4.86 3.14 8.99 7.5 10.45.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.7-1.47-3.7-1.47-.5-1.26-1.23-1.6-1.23-1.6-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.24.93.1-.73.39-1.21.71-1.49-2.43-.28-4.98-1.22-4.98-5.43 0-1.2.42-2.18 1.11-2.95-.11-.28-.48-1.4.11-2.92 0 0 .9-.29 2.95 1.11a10.1 10.1 0 0 1 2.69-.36c.91.01 1.83.12 2.69.36 2.05-1.4 2.95-1.11 2.95-1.11.59 1.52.22 2.64.11 2.92.69.77 1.11 1.75 1.11 2.95 0 4.22-2.56 5.15-4.99 5.42.4.35.76 1.03.76 2.08 0 1.5-.01 2.71-.01 3.08 0 .29.2.64.76.53 4.36-1.46 7.5-5.59 7.5-10.45C23.25 5.48 18.27.5 12 .5z"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/veasna-mom" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.1 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4zM8.5 8.5h3.84v2.06h.05c.54-1.02 1.86-2.06 3.83-2.06 4.1 0 4.86 2.7 4.86 6.21V24h-4v-7.2c0-1.72-.03-3.94-2.4-3.94-2.4 0-2.77 1.88-2.77 3.82V24h-4z"/></svg>
+      </a>
+      <a href="https://www.researchgate.net/profile/Mom-Veasna" target="_blank" title="ResearchGate" aria-label="ResearchGate">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6zM8 4v16h8V4H8z"/></svg>
+      </a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-1 p-6 md:p-10 overflow-auto">
-    <!-- About -->
-    <section id="about" class="card">
-      <h2 class="section-title">Research & Academic Summary</h2>
-      <p class="text-gray-600">
-        M.Tech candidate in Mechanical Engineering (Thermal & Fluid) at IIT Bombay. Research focus: Computational Fluid Dynamics (CFD), film cooling, heat transfer,
-        multiphase flows. Experienced in OpenFOAM (v2312), ANSYS Fluent, ParaView, MATLAB, and Python for simulation, validation, and post-processing.
+  <!-- MAIN -->
+  <main role="main" aria-live="polite">
+    <!-- ABOUT -->
+    <section id="about" class="card" tabindex="-1">
+      <h2>Research & Academic Summary</h2>
+      <p class="muted small" style="margin-top:8px">M.Tech candidate in Mechanical Engineering (Thermal & Fluid) at IIT Bombay.</p>
+      <p style="margin-top:12px">
+        Research focus: Computational Fluid Dynamics (CFD), film cooling, heat transfer, and multiphase flows.
+        Experienced in setting up OpenFOAM cases (v2312), ANSYS Fluent, ParaView and MATLAB for simulation, validation and post-processing.
+        I work on reproducible open-source CFD workflows and HPC-enabled simulations.
       </p>
     </section>
 
-    <!-- Research Interests -->
-    <section id="interests" class="card">
-      <h2 class="section-title">Research Interests</h2>
-      <ul class="list-disc list-inside text-gray-600">
+    <!-- RESEARCH INTERESTS -->
+    <section id="interests" class="card" tabindex="-1">
+      <h2>Research Interests</h2>
+      <ul style="margin-top:10px">
         <li>Film cooling & turbine blade heat transfer</li>
         <li>Compressible & multiphase flows (VOF)</li>
-        <li>Turbulence modeling and LES/RANS hybrid methods</li>
+        <li>Turbulence modelling and LES/RANS hybrid methods</li>
         <li>Machine learning for turbulence modeling</li>
         <li>CFD validation & reproducibility using open-source tools</li>
       </ul>
     </section>
 
-    <!-- Research Experience -->
-    <section id="experience" class="card">
-      <h2 class="section-title">Research Experience</h2>
-      <div class="mb-4">
-        <h3 class="font-semibold">CFD Research Intern — IIT Patna</h3>
-        <p class="text-sm text-gray-500">Dec 2024 – Present</p>
-        <p class="text-gray-600 mt-2 text-sm">
-          Numerical investigation of vortex shedding behind cylinders. Implemented two-phase VOF models in ANSYS/OpenFOAM, developed wave input models, and performed HPC parallel runs.
-        </p>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="card" tabindex="-1">
+      <h2>Research Experience</h2>
+
+      <div style="margin-top:10px" class="two-col">
+        <div>
+          <h3 style="margin-bottom:6px">CFD Research Intern — IIT Patna</h3>
+          <div class="meta">Dec 2024 – Present</div>
+        </div>
+        <div>
+          <p class="small muted">Vortex shedding · VOF · Free-surface flow · HPC</p>
+        </div>
       </div>
-      <div>
-        <h3 class="font-semibold">CFD Research Intern — FOSSEE, IIT Bombay</h3>
-        <p class="text-sm text-gray-500">Mar 2024 – Dec 2024</p>
-        <p class="text-gray-600 mt-2 text-sm">
-          Reproduced and validated film-cooling simulations from literature using OpenFOAM v2312. Studied blowing ratio, turbulence models, and conducted large-scale simulations.
-        </p>
+      <p class="small" style="margin-top:8px">
+        Numerical investigation of vortex shedding behind cylinders. Implemented two-phase VOF models in ANSYS/OpenFOAM, developed wave input models,
+        performed HPC parallel runs and extensive post-processing in Python & ParaView.
+      </p>
+
+      <hr style="margin:16px 0;border:none;border-top:1px solid #eef2ff" />
+
+      <div class="two-col">
+        <div>
+          <h3 style="margin-bottom:6px">CFD Research Intern — FOSSEE, IIT Bombay</h3>
+          <div class="meta">Mar 2024 – Dec 2024</div>
+        </div>
+        <div>
+          <p class="small muted">OpenFOAM migration · Film cooling · Validation</p>
+        </div>
       </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="card">
-      <h2 class="section-title">Selected Projects</h2>
-      <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
-        <li>Ocean Wave Energy Harvesting — Piezoelectric (Research Grant ₹80,000)</li>
-        <li>Numerical Analysis of Air Film Cooling (OpenFOAM)</li>
-        <li>Effect of Hole Geometry on Film Cooling Effectiveness</li>
-      </ul>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications" class="card">
-      <h2 class="section-title">Publications & Presentations</h2>
-      <p class="text-gray-600 text-sm mb-2"><strong>Conference:</strong> Presented at ICON-GTSD-2.0 (Mar 2024).</p>
-      <p class="text-gray-600 text-sm">FOSSEE Research Migration report: "Numerical Analysis of Air Film Cooling" (June 2024).</p>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="card">
-      <h2 class="section-title">Technical Skills</h2>
-      <ul class="list-disc list-inside text-gray-600 text-sm">
-        <li>CFD Tools: OpenFOAM, ANSYS Fluent, ParaView</li>
-        <li>Programming: Python, MATLAB, C++</li>
-        <li>Parallel Computing: MPI, HPC job scripting</li>
-      </ul>
-    </section>
-
-    <!-- Awards -->
-    <section id="awards" class="card">
-      <h2 class="section-title">Awards & Grants</h2>
-      <ul class="list-disc list-inside text-gray-600 text-sm">
-        <li>Seed Money Grant ₹80,000 — Piezoelectric Ocean Wave Energy Project</li>
-      </ul>
-    </section>
-
-    <!-- Certificates -->
-    <section id="certificates" class="card">
-      <h2 class="section-title">Certificates</h2>
-      <ul class="list-disc list-inside text-gray-600 text-sm">
-        <li>FOSSEE Internship Certificate — OpenFOAM Research Migration (IIT Bombay)</li>
-        <li>Coursera: Applied CFD (Siemens)</li>
-        <li>Coursera: Numerical Methods (HKUST)</li>
-        <li>Coursera: Fluid-Structure Interaction (École Polytechnique)</li>
-      </ul>
-    </section>
-
-    <!-- Teaching -->
-    <section id="teaching" class="card">
-      <h2 class="section-title">Teaching & Mentoring</h2>
-      <p class="text-gray-600 text-sm">
-        Volunteered as a Math & Physics tutor at Institute of Technology of Cambodia (2020–2021).
+      <p class="small" style="margin-top:8px">
+        Reproduced and validated film-cooling simulations from literature (ANSYS Fluent) using OpenFOAM v2312. Implemented blockMesh setups,
+        turbulence wall functions, and parameter studies on blowing ratio and injection angle.
       </p>
     </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="card" tabindex="-1">
+      <h2>Selected Projects</h2>
+      <ul style="margin-top:10px" class="small">
+        <li><strong>Ocean Wave Energy Harvesting — Piezoelectric</strong> (Research grant ₹80,000). Modeled vibration-electromechanical coupling in Ansys Mechanical; optimized energy harvesting geometry.</li>
+        <li><strong>Numerical Analysis of Air Film Cooling (OpenFOAM)</strong>. 2D flat-plate film-cooling study with validation against literature; post-processed with ParaView & MATLAB.</li>
+        <li><strong>Effect of Hole Geometry on Film Cooling Effectiveness</strong>. Compressible flow study comparing cylindrical and fan-shaped holes using k-ε model.</li>
+      </ul>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="card" tabindex="-1">
+      <h2>Publications & Presentations</h2>
+      <p class="small muted" style="margin-top:8px"><strong>Conference:</strong> Presented "Ocean Wave Energy Harvesting System Design using Piezoelectric" at ICON-GTSD-2.0 (Mar 2024).</p>
+      <p class="small muted" style="margin-top:8px">Project report: FOSSEE — "Numerical Analysis of Air Film Cooling" (June 2024). Project materials available on FOSSEE project page.</p>
+      <p class="small muted" style="margin-top:8px">Add peer-reviewed publications here (format: Author, Year, Title, Journal, DOI).</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="card" tabindex="-1">
+      <h2>Technical Skills</h2>
+      <div style="margin-top:10px" class="two-col">
+        <div>
+          <h3 style="margin-bottom:6px">CFD & Tools</h3>
+          <p class="small">OpenFOAM (v2312), ANSYS Fluent, ParaView, Tecplot</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:6px">Programming & HPC</h3>
+          <p class="small">Python (post-processing), MATLAB, C++, MPI, job scripts for HPC</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards" class="card" tabindex="-1">
+      <h2>Awards & Grants</h2>
+      <ul style="margin-top:10px" class="small muted">
+        <li>Seed Money Grant ₹80,000 — Piezoelectric Ocean Wave Energy (GPERI / GTU)</li>
+      </ul>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="card" tabindex="-1">
+      <h2>Certificates</h2>
+      <ul style="margin-top:10px" class="small">
+        <li><a href="https://cfd.fossee.in/research-migration-project/research-migration-run/51" target="_blank" rel="noopener">FOSSEE Internship Certificate — OpenFOAM Research Migration (IIT Bombay)</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/EXAMPLE1" target="_blank" rel="noopener">Coursera: Applied CFD (Siemens)</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/EXAMPLE2" target="_blank" rel="noopener">Coursera: Numerical Methods (HKUST)</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/EXAMPLE3" target="_blank" rel="noopener">Coursera: Fluid-Structure Interaction (École Polytechnique)</a></li>
+      </ul>
+      <p class="muted small" style="margin-top:8px">If you upload PDF certificates to <code>/certificates</code>, I can add direct download links.</p>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching" class="card" tabindex="-1">
+      <h2>Teaching & Mentoring</h2>
+      <p class="small">Volunteered as a Math & Physics tutor at Institute of Technology of Cambodia (2020–2021). Assisted juniors with courses and practical labs.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" tabindex="-1">
+      <h2>Contact</h2>
+      <p class="small muted">Email: <a href="mailto:veasna.mom.cfd@gmail.com" class="accent" style="color:var(--blue)">veasna.mom.cfd@gmail.com</a></p>
+      <p class="small muted" style="margin-top:6px">WhatsApp: <a href="https://wa.me/+919624957569" target="_blank" rel="noopener" style="color:var(--blue)">+91 96249 57569</a></p>
+      <p class="small muted" style="margin-top:8px">Permanent address: Kralanh Pi Village, Svay Rieng Province, Cambodia</p>
+    </section>
+
+    <footer style="text-align:center;margin:24px 0;color:var(--muted);font-size:13px">© <span id="year"></span> Veasna Mom — M.Tech (Thermal & Fluid), IIT Bombay</footer>
   </main>
+
+  <!-- Inline JS: active nav highlight + keyboard focus for sections -->
+  <script>
+    (function(){
+      // set year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const navLinks = Array.from(document.querySelectorAll('.nav a'));
+      const sections = Array.from(document.querySelectorAll('main section[id]'));
+
+      // throttle scroll handler
+      let ticking = false;
+      function onScroll(){
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          const offset = window.scrollY || window.pageYOffset;
+          // find section nearest top (with small offset)
+          let current = sections[0];
+          for (let s of sections) {
+            if (s.offsetTop - 120 <= offset) current = s;
+            else break;
+          }
+          // update nav active
+          navLinks.forEach(a => a.classList.remove('active'));
+          const activeLink = document.querySelector('.nav a[href="#' + current.id + '"]');
+          if(activeLink) activeLink.classList.add('active');
+          ticking = false;
+        });
+      }
+
+      // handle click to focus for accessibility on small screens
+      navLinks.forEach(a => {
+        a.addEventListener('click', (e) => {
+          // allow default smooth scroll, then focus target
+          const targetId = a.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            setTimeout(() => target.focus({preventScroll:true}), 400);
+          }
+        });
+      });
+
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('load', onScroll);
+
+      // keyboard nav: pressing letters jumps to sections (optional helpful)
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        if (e.key === 'g') { // g for 'go' toggles scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+
+    })();
+  </script>
 </body>
 </html>
